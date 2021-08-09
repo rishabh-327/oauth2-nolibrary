@@ -1,0 +1,83 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.main {
+  padding: 5rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: #06203e;
+  margin: 0;
+  line-height: 1.15;
+  font-size: 3rem;
+}
+
+.button {
+  padding: 1rem 2rem;
+  background: rgb(54, 114, 255);
+  border-radius: 8px;
+  font-size: 1rem;
+  border: none;
+  color: white;
+  margin: 4rem 1rem;
+  box-shadow: 2px 4px 10px -2px rgba(0, 0, 0, 0.56);
+  transition: all 0.1s ease-in;
+}
+.button:hover {
+  background: rgb(41, 94, 219);
+  cursor: pointer;
+}
+
+a {
+  color: #0070f3;
+  text-decoration: none;
+}
+a:link,
+a:active {
+  color: inherit;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5rem;
+  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: rgb(249, 252, 255);
+}
+.profile .profile-pic {
+  margin-right: 1rem;
+}
+.profile img {
+  border-radius: 50%;
+}
