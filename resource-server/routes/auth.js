@@ -10,6 +10,7 @@ const authRouter = Router()
 
 // Generates an anti-forgery token(STATE) to validate the 'AUTHORIZATION_CODE' in next step.
 authRouter.get('/initiate-auth', async (req, res) => {
+  // For fresh authentication requests
   if (!req.session.access_token) {
     const state = crypto.randomBytes(20).toString('hex')
     req.session.state = state
@@ -21,6 +22,7 @@ authRouter.get('/initiate-auth', async (req, res) => {
   }
 
   try {
+    // If an access_token already exists in the session, then try to get user info directly 
     const userInfo = await getUserInfo(req.session.access_token)
 
     res.status(200).json({
@@ -36,6 +38,7 @@ authRouter.get('/initiate-auth', async (req, res) => {
     return
 
   } catch (error) {
+    // If the token present in the session is expired, then initiate a new auth-flow
     const state = crypto.randomBytes(20).toString('hex')
     req.session.state = state
     res.status(200).json({
@@ -73,9 +76,9 @@ authRouter.post('/callback', authStateValidation, async (req, res) => {
       return
     }
 
-    // Set ACCESS_TOKEN in the session to making Authorized requests
+    // Set ACCESS_TOKEN in the session to make Authorized requests afterwards
     req.session.access_token = data.access_token
-    // Clear the STATE session value, as it it no longer needed after getting the ACCSES_TOKEN
+    // Clear the STATE session value, as it is no longer needed after getting the ACCSES_TOKEN
     req.session.state = undefined
 
     // Decode ID_TOKEN to get USER_INFO
